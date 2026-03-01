@@ -1,0 +1,42 @@
+services:
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rag-backend
+    env_file:
+      - .env
+    environment:
+      CHROMA_PERSIST_DIR: /app/chroma_db
+      FEEDBACK_DB_PATH: /app/data/feedback.db
+    volumes:
+      - chroma_data:/app/chroma_db
+      - feedback_data:/app/data
+    ports:
+      - "8000:8000"       # expose for direct debugging; remove in production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rag-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
+    driver: local
+  feedback_data:
+    driver: local
