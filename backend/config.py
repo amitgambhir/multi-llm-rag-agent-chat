@@ -18,8 +18,8 @@ class Settings(BaseSettings):
     RETRIEVAL_CANDIDATES: int = 6  # K * 2 for RLHF re-ranking
 
     # LLM models
-    OPENAI_MODEL: str = "gpt-4o"
-    GEMINI_MODEL: str = "gemini-1.5-flash"
+    OPENAI_MODEL: str = "gpt-5"
+    GEMINI_MODEL: str = "gemini-2.5-flash"
 
     # Complexity threshold: >= this → OpenAI, < this → Gemini
     COMPLEXITY_THRESHOLD: float = 0.4

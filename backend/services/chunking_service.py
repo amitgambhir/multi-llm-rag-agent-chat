@@ -118,7 +118,20 @@ class ChunkingService:
 
     @staticmethod
     def _assign_chunk_ids(chunks: List[Document]) -> List[Document]:
-        """Inject a stable chunk_id into each chunk's metadata."""
+        """Inject a stable chunk_id into each chunk's metadata.
+
+        Filters out empty chunks and deduplicates chunks with identical
+        content (same source + same hash), keeping only the first occurrence.
+        """
+        seen_ids: set[str] = set()
+        result: List[Document] = []
         for chunk in chunks:
-            chunk.metadata["chunk_id"] = _generate_chunk_id(chunk)
-        return chunks
+            if not chunk.page_content.strip():
+                continue  # skip empty / whitespace-only chunks
+            chunk_id = _generate_chunk_id(chunk)
+            if chunk_id in seen_ids:
+                continue  # skip duplicate content within this batch
+            seen_ids.add(chunk_id)
+            chunk.metadata["chunk_id"] = chunk_id
+            result.append(chunk)
+        return result

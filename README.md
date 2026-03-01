@@ -249,9 +249,9 @@ Every query is scored before an LLM is selected:
 complexity_score = calculate_complexity(query)  # → float in [0.0, 1.0]
 
 if complexity_score >= 0.4:   # COMPLEXITY_THRESHOLD (configurable)
-    llm = ChatOpenAI(model="gpt-4o")
+    llm = ChatOpenAI(model="gpt-5")
 else:
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 ```
 
 **Scoring factors** (all additive, clamped to [0.0, 1.0]):
@@ -440,7 +440,7 @@ Send a message and receive a RAG-grounded answer.
   "sources": [
     { "content": "...(first 300 chars)...", "source": "networking-guide.pdf", "score": 0.87, "chunk_id": "..." }
   ],
-  "llm_used": "gpt-4o",
+  "llm_used": "gpt-5",
   "complexity_score": 0.53,
   "chunk_ids": ["id1", "id2", "id3"],
   "session_id": "uuid"
@@ -482,8 +482,8 @@ All settings live in `.env` (copy from `.env.example`):
 |---|---|---|
 | `OPENAI_API_KEY` | *(required)* | OpenAI API key |
 | `GOOGLE_API_KEY` | *(required)* | Google AI Studio API key |
-| `OPENAI_MODEL` | `gpt-4o` | OpenAI model for complex queries |
-| `GEMINI_MODEL` | `gemini-1.5-flash` | Gemini model for simple queries |
+| `OPENAI_MODEL` | `gpt-5` | OpenAI model for complex queries |
+| `GEMINI_MODEL` | `gemini-2.5-flash` | Gemini model for simple queries |
 | `COMPLEXITY_THRESHOLD` | `0.4` | Score above which queries go to OpenAI |
 | `RETRIEVAL_K` | `3` | Final number of chunks sent to LLM |
 | `RETRIEVAL_CANDIDATES` | `6` | Candidates fetched before RLHF re-rank |
