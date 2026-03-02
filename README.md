@@ -1,6 +1,6 @@
 # Multi-LLM RAG Agent
 
-A production-ready, fully containerised **Retrieval-Augmented Generation (RAG)** chatbot that intelligently routes queries between OpenAI GPT-4o and Google Gemini based on query complexity, with human feedback (RLHF) continuously improving retrieval quality.
+A production-ready, fully containerized **Retrieval-Augmented Generation (RAG)** chatbot that intelligently routes queries between OpenAI GPT-4o and Google Gemini based on query complexity, with human feedback (RLHF) continuously improving retrieval quality.
 
 ---
 
