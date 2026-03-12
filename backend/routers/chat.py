@@ -61,7 +61,7 @@ async def chat(payload: ChatRequest):
 
     sources = [
         Source(
-            content=doc.page_content[:300],
+            content=doc.page_content,
             source=doc.metadata.get("source", doc.metadata.get("file_name", "unknown")),
             score=round(score, 4),
             chunk_id=cid,
