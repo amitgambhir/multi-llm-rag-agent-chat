@@ -24,6 +24,7 @@ A production-ready, fully containerized **Retrieval-Augmented Generation (RAG)**
 8. [Local Development (without Docker)](#local-development-without-docker)
 9. [Extending the System](#extending-the-system)
 10. [Project Structure](#project-structure)
+11. [License](#license)
 
 ---
 
@@ -658,3 +659,9 @@ multi-llm-rag-agent-chat/
             ├── FeedbackButtons.jsx # 👍/👎 with one-shot submit logic
             └── StatusBadge.jsx    # Animated status pill (pending/processing/…)
 ```
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
