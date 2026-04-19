@@ -4,6 +4,20 @@ A production-ready, fully containerized **Retrieval-Augmented Generation (RAG)**
 
 ---
 
+## RAG Ecosystem
+
+This repo is part of a broader RAG toolkit:
+
+| Repo | What it covers |
+| --- | --- |
+| [rag-auditor](https://github.com/amitgambhir/rag-auditor) | Evaluate your RAG pipeline |
+| [multi-llm-rag-agent-chat](https://github.com/amitgambhir/multi-llm-rag-agent-chat) ← you are here | Build a production RAG chatbot with multi-LLM routing |
+| [rag-system-design-guide](https://github.com/amitgambhir/rag-system-design-guide) | Design reference — architecture patterns and trade-offs |
+
+Start with the design guide, build with the chatbot, evaluate with this.
+
+---
+
 ## Table of Contents
 
 1. [Features](#features)
